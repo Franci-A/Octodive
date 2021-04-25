@@ -18,7 +18,7 @@ public class Parallax : MonoBehaviour
     {
         foreach (GameObject background in backgrounds)
         {
-            if (background != null)
+            if (background != null && Time.timeScale != 0)
             {
                 background.transform.position += new Vector3(0, player.scoreUpdate * .35f, 0);
                 if (background.transform.position.y > maxPos)

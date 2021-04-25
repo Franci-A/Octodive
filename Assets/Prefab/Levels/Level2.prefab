@@ -65,7 +65,7 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 4408662494027259392}
   minPos: -10
-  maxPos: -10
+  maxPos: 90
 --- !u!1001 &89339247030510677
 PrefabInstance:
   m_ObjectHideFlags: 0

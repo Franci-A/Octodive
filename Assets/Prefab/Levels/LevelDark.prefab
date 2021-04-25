@@ -225,7 +225,7 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 8098045153586691503}
   minPos: -10
-  maxPos: 180
+  maxPos: 90
 --- !u!114 &3865186684394088053
 MonoBehaviour:
   m_ObjectHideFlags: 0

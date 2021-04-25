@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     private float moveTime;
 
     private bool isAttacking;
-    private float currentHealth = 5;
+    private float currentHealth = 4;
     private bool isDead;
 
     private float timer;
@@ -56,10 +56,11 @@ public class EnemyController : MonoBehaviour
             if (i == 0)
                 i = 1;
             moveToPos = new Vector3(20 * i, 0, 0);
+            moveTime = (moveToPos - this.transform.position).magnitude / maxSpeed;
             float angle = Vector2.SignedAngle(Vector2.right, (moveToPos - this.transform.position)) * Mathf.PI / 180;
             this.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
-            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
-            acceleration = direction.normalized * a;
+            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)).normalized;
+            acceleration = direction * a;
             speed = acceleration.normalized * Time.fixedDeltaTime * 1.5f;
             moveTime = speed.magnitude * (moveToPos - this.transform.position).magnitude;
             StartCoroutine(Died());
@@ -154,7 +155,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Died()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         Destroy(this.gameObject);
     }
 }

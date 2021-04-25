@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             float angle = Vector2.SignedAngle(Vector2.right, (worldPosCursor - this.transform.position)) * Mathf.PI / 180;
             this.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
 
-            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
+            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)).normalized;
             acceleration = direction.normalized * a / Mathf.Pow(direction.magnitude, 2);
 
             audioSource.clip = soundEffects[2];
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
             speed = Vector3.ClampMagnitude(speed, maxSpeed);
         }
 
-        //clamped doerders--------------------------
+        //clamped borders--------------------------
         if (Camera.main.WorldToScreenPoint(this.transform.position).x < -10 )
         {
             this.transform.position = new Vector3((Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0,0))).x -.2f, this.transform.position.y, this.transform.position.z);
@@ -130,13 +130,15 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && gameTimer - lastBoostUsed > .2f)
             {
                 isCharging = true;
+                myAnimator.SetTrigger("Charge");
+                Debug.Log("charging");
             }
 
 
             if (isCharging && boostTimer < maxBoost)
             {
                 boostTimer += Time.deltaTime;
-                myAnimator.SetTrigger("Charge");
+                
             }
             if (Input.GetMouseButtonUp(0))
             {
@@ -148,12 +150,11 @@ public class PlayerController : MonoBehaviour
                 Instantiate(bubbleParticles, this.transform.position, this.transform.rotation);
                 boost = boostTimer * boostSpeed;
                 boostTimer = 0;
-                Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
-                acceleration = direction.normalized * a / Mathf.Pow(direction.magnitude, 2);
+                Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)).normalized;
+                acceleration = direction * a / Mathf.Pow(direction.magnitude, 2);
                 speed = new Vector3(direction.x * boost, direction.y * boost, 0);
                 boost = 0;
                 isCharging = false;
-                myAnimator.ResetTrigger("Charge");
             }
         }
     }
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
                 speed = new Vector3(0,0,0);
                 acceleration = new Vector3(0,0,0);
                 int i = (int)GameObject.FindGameObjectWithTag("Score").GetComponent<Score>().score;
-                
+                scoreUpdate = 0;
                 GameObject.Find("GameManager").GetComponent<GameManager>().GameOver(i);
             }
             

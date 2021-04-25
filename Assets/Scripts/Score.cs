@@ -32,8 +32,9 @@ public class Score : MonoBehaviour
 
     private void Update()
     {
-        score += player.scoreUpdate;
-        scoreText.text = "Deepnest : " + (int)score;
+        if (Time.timeScale !=0)
+            score += player.scoreUpdate;
+        scoreText.text = "Depth : " + (int)score;
 
         if (score > envChange * i)
         {

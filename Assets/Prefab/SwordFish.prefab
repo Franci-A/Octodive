@@ -102,6 +102,7 @@ MonoBehaviour:
   boost: 5
   raduis: 0.5
   waitTime: 2
+  agroDistance: 7
 --- !u!50 &2987775907213949569
 Rigidbody2D:
   serializedVersion: 4

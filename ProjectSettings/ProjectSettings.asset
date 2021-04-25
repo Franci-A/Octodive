@@ -15,7 +15,7 @@ PlayerSettings:
   companyName: DefaultCompany
   productName: LudumDare48
   defaultCursor: {fileID: 2800000, guid: fff21fbb1d0a396448b6c9e8c1aedcdc, type: 3}
-  cursorHotspot: {x: 10, y: 10}
+  cursorHotspot: {x: 5, y: 5}
   m_SplashScreenBackgroundColor: {r: 0.3724635, g: 0.70960116, b: 0.8490566, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
@@ -44,8 +44,8 @@ PlayerSettings:
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 800
   defaultScreenHeight: 800
-  defaultScreenWidthWeb: 960
-  defaultScreenHeightWeb: 600
+  defaultScreenWidthWeb: 800
+  defaultScreenHeightWeb: 800
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   m_MTRendering: 1
@@ -549,7 +549,7 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 0
+  webGLCompressionFormat: 2
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
